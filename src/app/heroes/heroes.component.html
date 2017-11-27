@@ -3,11 +3,24 @@
 <ul class="heroes">
   <li *ngFor="let hero of heroes"> 
       <!-- Note: hero is passed to the function from the hero in the array of heroes (for loop) -->
-  <a routerLink="/detail/{{hero.id}}">  
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-  </a>
-    </li>
+    <a routerLink="/detail/{{hero.id}}">  
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+
+    <button (click)="deleteHero(hero)">X</button>
+
+  </li>
 </ul>
+
+<div>
+    <label>Hero name:
+        <input #heroName />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(heroName.value); heroName.value=''">
+        Add
+    </button>
+</div>
 
 <!-- We should be able to route to it
   <app-hero-detail [hero]="selectedHero"></app-hero-detail> 
